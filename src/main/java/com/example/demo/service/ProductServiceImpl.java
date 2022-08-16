@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Product;
+import com.example.demo.domain.ProductEntity;
 import com.example.demo.repos.ProductRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,26 +18,26 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> listAllProducts() {
-        final List<Product> product = productRepository.findAll();
+    public List<ProductEntity> listAllProducts() {
+        final List<ProductEntity> product = productRepository.findAll();
         return product;
     }
 
     @Override
-    public Product getProductById(Long id) {
-        final Product product = productRepository.findById(id).orElseThrow(() ->
+    public ProductEntity getProductById(Long id) {
+        final ProductEntity product = productRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Some error message"));
         return product;
     }
 
     @Override
-    public Product updateProduct(Product product, Long id) {
+    public ProductEntity updateProduct(ProductEntity product, Long id) {
         return productRepository.findById(id)
                 .map(existingProduct -> {
                     existingProduct.setName(product.getName());
                     existingProduct.setDescription(product.getDescription());
                     existingProduct.setPicture(product.getPicture());
-                    existingProduct.setPrice(product.getPrice());
+                    existingProduct.setPrices(product.getPrices());
 
                     return productRepository.save(existingProduct);
                 })
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product createNewProduct(Product product) {
+    public ProductEntity createNewProduct(ProductEntity product) {
         return productRepository.save(product);
     }
 }

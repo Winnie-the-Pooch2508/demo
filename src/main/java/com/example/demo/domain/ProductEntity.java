@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -26,28 +26,33 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(cascade =  CascadeType.ALL)
+    @OneToOne(cascade =  CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="picture_id")
-    private Media picture;
+    private MediaEntity picture;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name="product_id", referencedColumnName="id")
-    private Set<Price> price;
+    private Set<PricesEntity> prices;
 
 
-    public Set<Price> getPrice() {
-        return price;
+    public Set<PricesEntity> getPrices() {
+        return prices;
     }
 
-    public void setPrice(Set<Price> price) {
-        this.price = price;
+    public void setPrices(Set<PricesEntity> prices) {
+        if (this.prices == null) {
+            this.prices = prices;
+        } else {
+            this.prices.clear();
+            this.prices.addAll(prices);
+        }
     }
 
-    public Media getPicture() {
+    public MediaEntity getPicture() {
         return picture;
     }
 
-    public void setPicture(Media picture) {
+    public void setPicture(MediaEntity picture) {
         this.picture = picture;
     }
 

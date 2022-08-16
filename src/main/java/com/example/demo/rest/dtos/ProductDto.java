@@ -1,6 +1,5 @@
 package com.example.demo.rest.dtos;
 
-import com.example.demo.domain.Price;
 import java.util.Set;
 
 public class ProductDto {
@@ -8,7 +7,7 @@ public class ProductDto {
     private String name;
     private String description;
     private MediaDto picture;
-    private  Set<PriceDto> price;
+    private  Set<PricesDto> prices;
 
 
     public Long getId() {
@@ -38,10 +37,10 @@ public class ProductDto {
         this.picture = picture;
     }
 
-    public Set<PriceDto> getPrice() {
-        return price;
+    public Set<PricesDto> getPrices() {
+        return prices;
     }
-    public void setPrice(Set<PriceDto> price) {
-        this.price = price;
+    public void setPrices(Set<PricesDto> prices) {
+        this.prices = prices;
     }
 }

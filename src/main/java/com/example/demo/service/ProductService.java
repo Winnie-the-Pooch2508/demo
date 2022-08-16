@@ -1,18 +1,18 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Product;
+import com.example.demo.domain.ProductEntity;
 
 import java.util.List;
 
 public interface ProductService {
-    List<Product> listAllProducts();
+    List<ProductEntity> listAllProducts();
 
-    Product getProductById(Long id);
+    ProductEntity getProductById(Long id);
 
-    Product updateProduct(Product product, Long id);
+    ProductEntity updateProduct(ProductEntity product, Long id);
 
     void deleteProduct(Long id);
 
-    Product createNewProduct(Product product);
+    ProductEntity createNewProduct(ProductEntity product);
 }
 

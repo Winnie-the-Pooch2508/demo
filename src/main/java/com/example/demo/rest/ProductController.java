@@ -1,6 +1,6 @@
 package com.example.demo.rest;
 
-import com.example.demo.domain.Product;
+import com.example.demo.domain.ProductEntity;
 import com.example.demo.rest.dtos.ProductDto;
 import com.example.demo.service.ProductService;
 import org.modelmapper.ModelMapper;
@@ -37,23 +37,23 @@ class ProductController {
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
     public ResponseEntity<ProductDto> getProduct(@PathVariable Long id, Model model) {
-        final Product product = productService.getProductById(id);
+        final ProductEntity product = productService.getProductById(id);
         ProductDto productDto = convertToDto(product);
         return ResponseEntity.ok(productDto);
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     public ResponseEntity<ProductDto> createNewProduct(@RequestBody ProductDto newProductDto) {
-        Product product = convertToEntity(newProductDto);
-        final Product newProduct = productService.createNewProduct(product);
+        ProductEntity product = convertToEntity(newProductDto);
+        final ProductEntity newProduct = productService.createNewProduct(product);
         ProductDto productDto = convertToDto(newProduct);
         return new ResponseEntity<>(productDto, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
     public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto updatedProductDto, @PathVariable Long id) {
-        Product product = convertToEntity(updatedProductDto);
-        final Product updatedProduct = productService.updateProduct(product, id);
+        ProductEntity product = convertToEntity(updatedProductDto);
+        final ProductEntity updatedProduct = productService.updateProduct(product, id);
         ProductDto productDto = convertToDto(updatedProduct);
         return ResponseEntity.ok(productDto);
     }
@@ -64,12 +64,12 @@ class ProductController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    private ProductDto convertToDto(Product productEntity){
+    private ProductDto convertToDto(ProductEntity productEntity){
         return modelMapper.map(productEntity, ProductDto.class);
     }
 
-    private Product convertToEntity(ProductDto productDto){
-        return modelMapper.map(productDto,Product.class);
+    private ProductEntity convertToEntity(ProductDto productDto){
+        return modelMapper.map(productDto, ProductEntity.class);
     }
 
 }
