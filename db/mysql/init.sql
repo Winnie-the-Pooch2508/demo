@@ -7,7 +7,7 @@ CREATE TABLE task.product(
     version INT NOT NULL default 0,
 	description TEXT
 );
-CREATE TABLE task.media(
+CREATE TABLE task.picture(
     id INT primary key auto_increment not null,
     filename text not null,
     url text not null,
