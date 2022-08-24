@@ -7,7 +7,7 @@ public class ProductDto {
     private String name;
     private String description;
     private PictureDto picture;
-    private  Set<PricesDto> prices;
+    private  Set<PriceDto> prices;
 
 
     public Long getId() {
@@ -37,10 +37,10 @@ public class ProductDto {
         this.picture = picture;
     }
 
-    public Set<PricesDto> getPrices() {
+    public Set<PriceDto> getPrices() {
         return prices;
     }
-    public void setPrices(Set<PricesDto> prices) {
+    public void setPrices(Set<PriceDto> prices) {
         this.prices = prices;
     }
 }

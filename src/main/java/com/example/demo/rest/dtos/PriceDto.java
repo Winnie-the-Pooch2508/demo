@@ -1,6 +1,6 @@
 package com.example.demo.rest.dtos;
 
-public class PricesDto {
+public class PriceDto {
     private Long id;
     private String value;
     private String currencyIsoCode;

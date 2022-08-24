@@ -60,4 +60,11 @@ public class PictureEntity {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public ProductEntity getProduct() {
+        return product;
+    }
+    public void setProduct(ProductEntity product) {
+        this.product = product;
+    }
 }

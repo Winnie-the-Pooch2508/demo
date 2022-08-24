@@ -10,7 +10,7 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "price")
-public class PricesEntity {
+public class PriceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

@@ -38,7 +38,7 @@ public class ProductEntity {
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name="product_id", referencedColumnName="id")
-    private Set<PricesEntity> prices;
+    private Set<PriceEntity> prices;
 
     public long getVersion() {
         return version;
@@ -47,10 +47,10 @@ public class ProductEntity {
         this.version = version;
     }
 
-    public Set<PricesEntity> getPrices() {
+    public Set<PriceEntity> getPrices() {
         return prices;
     }
-    public void setPrices(Set<PricesEntity> prices) {
+    public void setPrices(Set<PriceEntity> prices) {
         if (this.prices == null) {
             this.prices = prices;
         } else {
