@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import java.util.Set;
 
 
@@ -26,19 +27,29 @@ public class ProductEntity {
     @Column(name = "description")
     private String description;
 
+
+    @Version
+    @Column(name = "version")
+    private long version;
+
     @OneToOne(cascade =  CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="picture_id")
+    @JoinColumn(name="id", referencedColumnName="product_id")
     private MediaEntity picture;
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name="product_id", referencedColumnName="id")
     private Set<PricesEntity> prices;
 
+    public long getVersion() {
+        return version;
+    }
+    public void setVersion(long version) {
+        this.version = version;
+    }
 
     public Set<PricesEntity> getPrices() {
         return prices;
     }
-
     public void setPrices(Set<PricesEntity> prices) {
         if (this.prices == null) {
             this.prices = prices;
@@ -51,7 +62,6 @@ public class ProductEntity {
     public MediaEntity getPicture() {
         return picture;
     }
-
     public void setPicture(MediaEntity picture) {
         this.picture = picture;
     }
@@ -60,7 +70,6 @@ public class ProductEntity {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -68,7 +77,6 @@ public class ProductEntity {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -76,7 +84,6 @@ public class ProductEntity {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }

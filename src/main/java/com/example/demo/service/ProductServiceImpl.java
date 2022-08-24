@@ -38,7 +38,6 @@ public class ProductServiceImpl implements ProductService {
                     existingProduct.setDescription(product.getDescription());
                     existingProduct.setPicture(product.getPicture());
                     existingProduct.setPrices(product.getPrices());
-
                     return productRepository.save(existingProduct);
                 })
                 .orElseGet(() -> productRepository.save(product));

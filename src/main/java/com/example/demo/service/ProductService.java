@@ -11,8 +11,10 @@ public interface ProductService {
 
     ProductEntity updateProduct(ProductEntity product, Long id);
 
+
     void deleteProduct(Long id);
 
     ProductEntity createNewProduct(ProductEntity product);
+
 }
 
