@@ -32,9 +32,9 @@ public class ProductEntity {
     @Column(name = "version")
     private long version;
 
-    @OneToOne(cascade =  CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="id", referencedColumnName="product_id")
-    private MediaEntity picture;
+
+    @OneToOne(fetch= FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "product")
+    private PictureEntity picture;
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name="product_id", referencedColumnName="id")
@@ -59,10 +59,10 @@ public class ProductEntity {
         }
     }
 
-    public MediaEntity getPicture() {
+    public PictureEntity getPicture() {
         return picture;
     }
-    public void setPicture(MediaEntity picture) {
+    public void setPicture(PictureEntity picture) {
         this.picture = picture;
     }
 

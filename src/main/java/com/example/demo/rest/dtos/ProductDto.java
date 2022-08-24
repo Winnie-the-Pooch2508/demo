@@ -6,7 +6,7 @@ public class ProductDto {
     private Long id;
     private String name;
     private String description;
-    private MediaDto picture;
+    private PictureDto picture;
     private  Set<PricesDto> prices;
 
 
@@ -29,11 +29,11 @@ public class ProductDto {
         this.description = description;
     }
 
-    public MediaDto getPicture() {
+    public PictureDto getPicture() {
         return picture;
     }
 
-    public void setPicture(MediaDto picture) {
+    public void setPicture(PictureDto picture) {
         this.picture = picture;
     }
 

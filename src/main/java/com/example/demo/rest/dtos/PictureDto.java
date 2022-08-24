@@ -1,6 +1,6 @@
 package com.example.demo.rest.dtos;
 
-public class MediaDto {
+public class PictureDto {
     private Long id;
     private String fileName;
     private String url;
