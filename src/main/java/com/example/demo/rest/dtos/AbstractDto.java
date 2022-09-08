@@ -1,8 +1,7 @@
 package com.example.demo.rest.dtos;
 
-public class AbstractDto {
+public abstract class AbstractDto {
     private Long id;
-    private long version;
 
     public Long getId() {
         return id;
@@ -11,10 +10,4 @@ public class AbstractDto {
         this.id = id;
     }
 
-    public long getVersion() {
-        return version;
-    }
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }

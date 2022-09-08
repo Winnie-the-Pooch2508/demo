@@ -16,7 +16,7 @@ public abstract class AbstractEntity {
 
     @Version
     @Column(name = "version")
-    private long version;
+    private Long version;
 
     public Long getId() {
         return id;
