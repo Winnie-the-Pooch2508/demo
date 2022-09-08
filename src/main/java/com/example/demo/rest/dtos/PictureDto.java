@@ -1,16 +1,9 @@
 package com.example.demo.rest.dtos;
 
-public class PictureDto {
-    private Long id;
+public class PictureDto extends  AbstractDto {
     private String fileName;
     private String url;
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
     public String getFileName() {
         return fileName;
     }

@@ -11,27 +11,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import java.util.Set;
 
 
 @Entity
 @Table(name = "product")
-public class ProductEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+public class ProductEntity extends AbstractEntity {
+
+
+
     @Column(name = "name")
     private String name;
     @Column(name = "description")
     private String description;
-
-
-    @Version
-    @Column(name = "version")
-    private long version;
-
 
     @OneToOne(fetch= FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "product")
     private PictureEntity picture;
@@ -39,13 +31,6 @@ public class ProductEntity {
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name="product_id", referencedColumnName="id")
     private Set<PriceEntity> prices;
-
-    public long getVersion() {
-        return version;
-    }
-    public void setVersion(long version) {
-        this.version = version;
-    }
 
     public Set<PriceEntity> getPrices() {
         return prices;
@@ -64,14 +49,7 @@ public class ProductEntity {
     }
     public void setPicture(PictureEntity picture) {
         this.picture = picture;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
+        this.picture.setProduct(this);
     }
 
     public String getName() {
@@ -87,4 +65,5 @@ public class ProductEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

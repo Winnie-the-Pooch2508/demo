@@ -1,16 +1,8 @@
 package com.example.demo.rest.dtos;
 
-public class PriceDto {
-    private Long id;
+public class PriceDto extends  AbstractDto{
     private String value;
     private String currencyIsoCode;
-
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
     public String getValue() {
         return value;
     }
